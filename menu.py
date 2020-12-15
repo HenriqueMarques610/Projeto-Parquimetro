@@ -1,8 +1,21 @@
+import csv
+from collections import namedtuple
+from datetime import datetime
+#def gettime():
+    #print(dateTimeObj)
+    # Access the member variables of datetime object to print date & time information
+    #print(dateTimeObj.year, '/', dateTimeObj.month, '/', dateTimeObj.day)
+    #print(dateTimeObj.hour, ':', dateTimeObj.minute)
+    
+
 def menu_principal():
+    dateTimeObj = datetime.now()
+    
     print("-------------------------------")
     print("-----      Bem Vindo      -----")
     print("----- Sistema Parquimetro -----")
-    print("          Dia e hora:          ")
+    print("      Dia:",dateTimeObj.day,'/', dateTimeObj.month,'/', dateTimeObj.year)
+    print("      Hora:",dateTimeObj.hour,'H' ,':', dateTimeObj.minute,"M")
     print("")
     print("1. Administrador")
     print("2. Cliente")
@@ -25,8 +38,6 @@ def menu_principal():
     elif(opcaoMP==0):
         exit
         
-
-
 
 
 def menu_administrador():

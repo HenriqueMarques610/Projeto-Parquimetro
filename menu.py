@@ -25,7 +25,7 @@ def menu_principal():
     elif(opcaoMP==0):
         exit
         
-menu_principal()
+
 
 
 
@@ -226,11 +226,5 @@ def menu_opcoes():
     elif(opcaoMO==0):
         exit
 
-
-    
-
-    
-
-    
-
-    
+   
+menu_principal()

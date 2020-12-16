@@ -7,7 +7,25 @@ from datetime import datetime
     #print(dateTimeObj.year, '/', dateTimeObj.month, '/', dateTimeObj.day)
     #print(dateTimeObj.hour, ':', dateTimeObj.minute)
     
+def diasDaSemana():
+    dateTimeObj = datetime.now()
+    diaSemana = dateTimeObj.today().weekday()       # 0 segunda, 1 terca, 2 quarta, 3 quinta, 4 sexta, 5 sabado, 6 domingo
+    hora = dateTimeObj.hour
+    
+    if (diaSemana >= 0 and diaSemana <=4):          # dia de semana
+        if (hora >= 9 and hora < 20):
+            menu_estacionar()
+        else:
+            print("Fora do Horario de estacionamento, pagamento apenas entre as 9h-20h")
+    elif(diaSemana == 5):
+        if( hora >= 9 or hora < 14):
+            menu_estacionar()
+        else:
+            print("Fora do Horario de estacionamento, pagamento apenas entre as 9h-14h")
+    else:
+        print("Fora do Horario de estacionamento, domingos e feriados estacionamento gratuito")
 
+    
 def menu_principal():
     dateTimeObj = datetime.now()
     
@@ -141,7 +159,7 @@ def menu_cliente():
     print("")
     opcaoMC=int(input("Escolha a opção pretendida -> "))
     if(opcaoMC==1):
-        menu_estacionar()
+        diasDaSemana()
         
     elif(opcaoMC==2):
         menu_zonas()#Ficheiro
@@ -156,6 +174,7 @@ def menu_cliente():
         exit
 
 def menu_estacionar():
+    
     print("--------------------------------")
     print("-----      Estacionar      -----")
     print("")
@@ -170,23 +189,74 @@ def menu_estacionar():
     opcaoME=int(input("Escolha a opção pretendida -> "))
     
     if(opcaoME==1):
-        print("")
-        #ficheiro zona 1
+        menu_zona1()
         
     elif(opcaoME==2):
-        print("")
-        #ficheiro zona 2
+        menu_zona2()
         
     elif(opcaoME==3):
-        print("")
-        #ficheiro zona 3
+        menu_zona3()
         
     elif(opcaoME==4):
         menu_cliente()
         
     elif(opcaoME==0):
         exit
+    
 
+def menu_zona1():
+    
+    preco = 1.15
+    duracao=45
+    
+    lst = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    
+    print("----------------------------")
+    print("-----      Zona 1      -----")
+    print("")
+    print("Preço: ",preco)
+    print("Duração Maxima (Minutos): ",duracao)
+    print("Lugares Disponiveis:")#NOME DO FICHEIRO
+    print("1. Estacionar")
+    print("4. Voltar")
+    print("0. Sair")
+    print("")
+    print("-----------------------------")
+    print("")
+    opcaoMZ1=int(input("Escolha a opção pretendida -> "))
+
+
+def menu_zona2():
+    preco = 1
+    duracao=2
+    print("----------------------------")
+    print("-----      Zona 2      -----")
+    print("")
+    print("Preço: ",preco, "Duração Maxima (Horas): ",duracao)
+    print("Lugares Disponiveis:")#NOME DO FICHEIRO
+    print("4. Voltar")
+    print("0. Sair")
+    print("")
+    print("-----------------------------")
+    print("")
+    opcaoMZ2=int(input("Escolha a opção pretendida -> "))    
+
+
+def menu_zona3():
+    preco = 0.62
+    print("----------------------------")
+    print("-----      Zona 3      -----")
+    print("")
+    print("Preço: ",preco, "Sem Duração Maxima ")
+    print("Lugares Disponiveis:")#NOME DO FICHEIRO
+    print("4. Voltar")
+    print("0. Sair")
+    print("")
+    print("-----------------------------")
+    print("")
+    opcaoMZ3=int(input("Escolha a opção pretendida -> "))
+    
+    
 def menu_historicoCLIENTE():
     print("-------------------------------")
     print("-----      Historico      -----")
